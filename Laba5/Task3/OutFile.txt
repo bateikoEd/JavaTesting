@@ -1,0 +1,12 @@
+9 lopysevich 49500.0
+8 poroshenko 49500.0
+7 chutk 30032.0
+5 volodymyr 14476.800000000001
+11 volodymyr 8744.0
+3 adynebab 8153.6
+2 bklishko 8153.6
+1 gorohov 4992.0
+4 lera 4992.0
+0 petrenko 3328.0
+10 john 3000.0
+6 bateiko 2000.0
