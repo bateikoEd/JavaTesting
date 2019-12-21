@@ -3,8 +3,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 
 public class Main {
     public static void main(String[] args) throws InterruptedException{
@@ -43,14 +41,23 @@ public class Main {
 
         //driver.findElement(By.id("sex-0")).click();
 
-        List<WebElement> oRadioButton = driver.findElements(By.name("sex"));
+        List<WebElement> oRadioButton = driver.findElements(By.name("profession"));
         System.out.println("LIST SIZE: " + oRadioButton.size());
 
         for(int i = 0; i < oRadioButton.size(); i++)
-            System.out.println(oRadioButton.get(i).getText());
+            System.out.println(oRadioButton.get(i).getTagName());
 
-        boolean boolRus = false;
-        boolRus = oRadioButton.get(0).isSelected();
+//        WebDriverWait wait = new WebDriverWait(driver, 1);
+
+//        WebElement foo = wait.until(oRadioButton.get(0));
+
+        boolean boolRus = oRadioButton.get(0).isSelected();
+
+        if(!oRadioButton.get(0).isSelected())
+            System.out.println("is not Selected");
+        else
+            System.out.println("is  selected");
+
         if(boolRus = true)
             oRadioButton.get(1).click();
         else

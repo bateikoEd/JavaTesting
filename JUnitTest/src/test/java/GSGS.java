@@ -8,16 +8,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.File;
 import java.io.IOException;
+import org.apache.commons.io.FileUtils;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GSGS {
 
+    static WebDriver driver;
     @org.junit.jupiter.api.Test
     void main() {
     }
 
-    static WebDriver driver;
+
     @Before
     public void setUp(){
         String exePath = "/home/bateiko/Downloads/chromedriver_linux64/chromedriver";
@@ -39,6 +41,6 @@ public class GSGS {
         {
             System.out.println(e.getMessage());
         }
+        driver.quit();
     }
-    driver.quit();
 }
