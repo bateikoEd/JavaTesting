@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="269fc257-a53b-49d5-b6b7-31a6b74b516a" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1VKxoGyjE8HA3qXJBTOg39mXI8r" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JavaTesting/JUnitTest" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.MyClassTest1">
+    <configuration name="Unnamed (1)" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MyClassTest" />
+      <module name="ExerciseUsingJUnit" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MyClass" />
+      <module name="ExerciseUsingJUnit" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyClassTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ExerciseUsingJUnit" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MyClassTest1" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyClassTest1.deleting" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ExerciseUsingJUnit" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MyClassTest1" />
+      <option name="METHOD_NAME" value="deleting" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyClassTest1.multiplying" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ExerciseUsingJUnit" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MyClassTest1" />
+      <option name="METHOD_NAME" value="multiplying" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.Unnamed (1)" />
+      <item itemvalue="JUnit.MyClassTest1" />
+      <item itemvalue="JUnit.MyClassTest1.deleting" />
+      <item itemvalue="JUnit.MyClassTest1.multiplying" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MyClassTest1" />
+        <item itemvalue="JUnit.MyClassTest1.multiplying" />
+        <item itemvalue="JUnit.MyClassTest1.deleting" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="269fc257-a53b-49d5-b6b7-31a6b74b516a" name="Default Changelist" comment="" />
+      <created>1577015760934</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1577015760934</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="311" y="39" width="800" height="729" key="#Intentions" timestamp="1577016951725">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="311" y="39" width="800" height="729" key="#Intentions/67.27.1299.741@67.27.1299.741" timestamp="1577016951725" />
+    <state x="262" y="64" width="898" height="664" key="#MyClassTest1" timestamp="1577017292058">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="262" y="64" width="898" height="664" key="#MyClassTest1/67.27.1299.741@67.27.1299.741" timestamp="1577017292058" />
+    <state x="311" y="58" width="847" height="677" key="#Project_Structure" timestamp="1577015779353">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="311" y="58" width="847" height="677" key="#Project_Structure/67.27.1299.741@67.27.1299.741" timestamp="1577015779353" />
+    <state x="67" y="54" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577016924197">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="67" y="54" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1299.741@67.27.1299.741" timestamp="1577016924197" />
+    <state x="341" y="182" width="525" height="428" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1577016695845">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="341" y="182" width="525" height="428" key="#com.intellij.ide.util.TreeClassChooserDialog/67.27.1299.741@67.27.1299.741" timestamp="1577016695845" />
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1577017213226">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1577017213226" />
+    <state width="1253" height="215" key="GridCell.Tab.0.bottom" timestamp="1577017895279">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1253" height="215" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1577017895279" />
+    <state width="1253" height="215" key="GridCell.Tab.0.center" timestamp="1577017895278">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1253" height="215" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1577017895278" />
+    <state width="1253" height="215" key="GridCell.Tab.0.left" timestamp="1577017895277">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1253" height="215" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1577017895277" />
+    <state width="1253" height="215" key="GridCell.Tab.0.right" timestamp="1577017895278">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1253" height="215" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1577017895278" />
+    <state x="205" y="27" width="1024" height="741" key="SettingsEditor" timestamp="1577017524118">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="205" y="27" width="1024" height="741" key="SettingsEditor/67.27.1299.741@67.27.1299.741" timestamp="1577017524118" />
+    <state x="176" y="101" width="442" height="590" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1577016983921">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="176" y="101" width="442" height="590" key="com.intellij.testIntegration.createTest.CreateTestDialog/67.27.1299.741@67.27.1299.741" timestamp="1577016983921" />
+  </component>
+</project>

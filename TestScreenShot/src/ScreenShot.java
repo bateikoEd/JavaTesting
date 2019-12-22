@@ -17,7 +17,6 @@ public class ScreenShot {
     @Test
     public void aTest(){
         driver.get("https://www.google.com/search?q=google&oq=goog&aqs=chrome.0.0l3j69i60l3j69i65l2.1135j0j7&sourceid=chrome&ie=UTF-8");
-
     }
 
     @After
