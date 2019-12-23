@@ -14,14 +14,14 @@ public class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
-    public BasePage(String URL){
+    public BasePage(){
         String exePath = "/home/bateiko/Downloads/chromedriver_linux64/chromedriver";
         System.setProperty("webdriver.chrome.driver", exePath);
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
-        this.driver.get(URL);
     }
     public BasePage getDriver(String URL) {
+
         this.driver.get(URL);
         return this;
     }
@@ -35,7 +35,7 @@ public class BasePage {
         }
         return this;
     }
-    public boolean writeText(By elemLocation, String text){
+    public boolean writeTextLocation(By elemLocation, String text){
 
         String strResult = driver.findElement(elemLocation).getText();
         if(strResult.equals(""))
@@ -48,13 +48,26 @@ public class BasePage {
         return true;
     }
 
+    public boolean writeTextWebElem(WebElement elem, String text){
+
+        String strResult = elem.getText();
+        if(strResult.equals(""))
+            elem.sendKeys(text);
+        else {
+            Actions actions = new Actions(driver);
+            actions.doubleClick(elem).perform();
+            elem.sendKeys(text);
+        }
+        return true;
+    }
+
     public String readText(By elemLocation){
         return driver.findElement(elemLocation).getText();
     }
     public boolean click(By elemLocation){
         try
         {
-            new WebDriverWait(driver, 3).until(ExpectedConditions.elementToBeClickable(elemLocation));
+//            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elemLocation));
             driver.findElement(elemLocation).click();
         }
         catch (WebDriverException ex)
