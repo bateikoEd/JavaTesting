@@ -98,10 +98,12 @@ class RozetkaClassTest {
 //
         /*enter min price in text elem*/
         rozetkaPage.writeTextWebElem(rozetkaPage.getMinTextElem(), Integer.toString(minPrice));
+//        rozetkaPage.writeTextLocation(By.xpath("/html/body/app-root/div/div[1]/rz-catalog/div/main/ivv-catalog/div[2]/aside/ivv-filter-stack/div[3]/div/div/div/div/ivv-filter-slider/form/fieldset/div/input[1]"), Integer.toString(minPrice));
+
 //        rozetkaPage.getMinTextElem().getAttribute(Integer.toString(minPrice));
         /*waitigtime*/
-        rozetkaPage.changeTime(30);
-//        rozetkaPage.changeTimeLimit(30);
+//        rozetkaPage.changeTime(30);
+        rozetkaPage.changeTimeLimit(20);
 
 //        rozetkaPage.getMinTextElem().click();
 
@@ -110,7 +112,7 @@ class RozetkaClassTest {
 
         /*waitigtime*/
         rozetkaPage.changeTime(20);
-        rozetkaPage.changeTimeLimit(30);
+//        rozetkaPage.changeTimeLimit(30);
 
         /*enter max price in text elem*/
         rozetkaPage.writeTextWebElem(rozetkaPage.getMaxTextElem(), Integer.toString(maxPrice));

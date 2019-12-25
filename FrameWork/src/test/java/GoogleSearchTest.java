@@ -16,7 +16,7 @@ class GoogleSearchTest {
 
     @AfterEach
     void tearDown() {
-        googlePage.exitDriver();
+        googlePage.getWebDriver().quit();
     }
 
     @Test

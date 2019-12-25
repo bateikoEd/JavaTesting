@@ -47,10 +47,10 @@ public class RozetkaClass extends BasePage {
         super();
         getDriver(baseURL);
         System.out.println("Firsr dim");
-        checkBoxProducer = new CheckBoxClass(driver,By.xpath("//ul[@id=sort_producer]/li"));
+        /*checkBoxProducer = new CheckBoxClass(driver,By.xpath("//ul[@id=sort_producer]/li"));
         checkBoxProcessors = new CheckBoxClass(driver,By.xpath("//ul[@id=sort_processor]/li"));
         checkBoxRAM = new CheckBoxClass(driver,By.xpath("//ul[@id=sort_20882]/li"));
-        checkBoxROM = new CheckBoxClass(driver,By.xpath("//ul[@id=sort_20863]/li"));
+        checkBoxROM = new CheckBoxClass(driver,By.xpath("//ul[@id=sort_20863]/li"));*/
     }
 
     public WebElement getSearchBox(){
