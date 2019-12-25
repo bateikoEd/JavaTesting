@@ -30,4 +30,9 @@ public class CheckBoxClass {
     public boolean isSelectedWebElement(int Index){
         return webElementList.get(Index).isSelected();
     }
+    public  CheckBoxClass setWebElementList(List<WebElement> list){
+        webElementList = list;
+        return this;
+    }
+
 }

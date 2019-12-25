@@ -1,10 +1,10 @@
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,22 +31,27 @@ class RozetkaClassTest {
     @Test
     void goToTypeOfSomething(){
         String strSearch = "Ноутбук";
-        By byLap = By.xpath("//img[@alt='Тонкі та легкі']");
-        String currentUrl = "https://rozetka.com.ua/ua/notebooks/c80004/filter/preset=tonkie-i-legkie/";
+//        By byLap = By.xpath("//img[@alt='Тонкі та легкі']");
+//        String currentUrl = "https://rozetka.com.ua/ua/notebooks/c80004/filter/preset=tonkie-i-legkie/";
+        rozetkaPage.init();
+        rozetkaPage.getSearchBox().click();
+        rozetkaPage.writeTextWebElem(rozetkaPage.getSearchBox(), strSearch);
+//        rozetkaPage.getSearchButton().click();
+//        rozetkaPage.getSearchButton().click();
 
-        rozetkaPage.goToTypeOfSomething(strSearch,byLap);
+//        click(subTypeSomething);
 
-        assertSame(currentUrl,rozetkaPage.currentUrl());
+//        assertSame(currentUrl,rozetkaPage.currentUrl());
     }
 
-    @Test
+    @Ignore
     void chooseCharacteristics(){
-        goToTypeOfSomething();
         int indexProducer1 = 1,
             indexProducer2 = 4,
             indexProcessor = 6,
             indexRom = 2,
             indexRam = 2;
+        rozetkaPage.init();
         checkBoxProcessors = new  CheckBoxClass (rozetkaPage.getCheckBoxProcessors());
         checkBoxProducer = new  CheckBoxClass (rozetkaPage.getCheckBoxProducer());
         checkBoxRAM = new  CheckBoxClass(rozetkaPage.getCheckBoxRAM());
@@ -75,15 +80,24 @@ class RozetkaClassTest {
 
     @Test
     void buyItem(){
-        chooseCharacteristics();
-        rozetkaPage.click(By.cssSelector("body > app-root > div > div:nth-child(2) > rz-catalog > div > main > ivv-catalog > div.layout.layout_with_sidebar > section > ivv-grid > ul > li:nth-child(1) > app-goods-tile > app-goods-tile-default > div > div.goods-tile__inner > div.goods-tile__prices > div.goods-tile__price.goods-tile__price_color_red > app-buy-button > button"));
-        rozetkaPage.click(By.xpath("//a[@href='https://my.rozetka.com.ua/ua/profile/cart']"));
-        rozetkaPage.click(By.xpath("//a[@href='https://my.rozetka.com.ua/ua/checkout']"));
+        rozetkaPage.buyThink();
     }
 
-    @After
-    void end(){
-        rozetkaPage.exitDriver();
+    @Test
+    void minAndMaxTextPrice(){
+        String currentUrl = "https://rozetka.com.ua/ua/notebooks/c80004/";
+        rozetkaPage.getDriver(currentUrl);
+        int minPrice = 100, maxPrice = 500;
+        rozetkaPage.init();
+        rozetkaPage.writeTextWebElem(rozetkaPage.getMinTextElem(), Integer.toString(50));
+        rozetkaPage.writeTextWebElem(rozetkaPage.getMaxTextElem(), Integer.toString(100));
+        rozetkaPage.getOkButtonPrice().click();
+
+        assertSame(rozetkaPage.tex,);
     }
+   /* @AfterAll
+    void end(){
+//        rozetkaPage.exitDriver();
+    }*/
 
 }
