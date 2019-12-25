@@ -1,6 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -19,18 +20,22 @@ public class RozetkaClass extends BasePage {
     private CheckBoxClass checkBoxROM;
 
     @FindBy(name="search")
+    @CacheLookup
     WebElement searchBox;
 
     @FindBy(css= "header-actions__button header-actions__button_type_basket header-actions__button_state_active")
     private WebElement basketButton;
 
     @FindBy(xpath = "/html/body/app-root/div/div[1]/div[1]/header/div/div[2]/div[3]/form/button")
+    @CacheLookup
     private WebElement searchButton;
 
     @FindBy(xpath = "/html/body/app-root/div/div[1]/rz-catalog/div/main/ivv-catalog/div[2]/aside/ivv-filter-stack/div[3]/div/div/div/div/ivv-filter-slider/form/fieldset/div/input[2]")
+    @CacheLookup
     private WebElement maxTextElem;
 
-    @FindBy(css = "body > app-root > div > div:nth-child(2) > rz-catalog > div > main > ivv-catalog > div.layout.layout_with_sidebar > aside > ivv-filter-stack > div:nth-child(3) > div > div > div > div > ivv-filter-slider > form > fieldset > div > input.slider-filter__input.ng-pristine.ng-valid.ng-touched")
+    @FindBy(xpath = "/html/body/app-root/div/div[1]/rz-catalog/div/main/ivv-catalog/div[2]/aside/ivv-filter-stack/div[3]/div/div/div/div/ivv-filter-slider/form/fieldset/div/input[1]")
+    @CacheLookup
     private WebElement minTextElem;
 
     @FindBy(xpath = "/html/body/app-root/div/div[1]/rz-catalog/div/main/ivv-catalog/div[2]/aside/ivv-filter-stack/div[3]/div/div/div/div/ivv-filter-slider/form/fieldset/div/button")
@@ -70,7 +75,7 @@ public class RozetkaClass extends BasePage {
         return baseURL;
     }
 
-    public String goToTypeOfSomething(String strSearch, By subTypeSomething){
+    public String goToTypeOfSomething(String strSearch, By subTypeSomething) throws InterruptedException {
         searchBox.click();
         writeTextWebElem(searchBox, strSearch);
 //        searchBox.submit();

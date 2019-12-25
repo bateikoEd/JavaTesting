@@ -3,7 +3,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
@@ -22,12 +21,13 @@ public class BasePage {
         String exePath = "/home/bateiko/Downloads/chromedriver_linux64/chromedriver";
         System.setProperty("webdriver.chrome.driver", exePath);
         this.driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 5);
+        wait = new WebDriverWait(driver,15 );
         driver.manage().window().maximize();
     }
     public BasePage getDriver(String URL) {
 
         this.driver.get(URL);
+        changeTimeLoad(30);
         return this;
     }
     public BasePage makeScreen(String nameScreen){
@@ -41,7 +41,6 @@ public class BasePage {
         return this;
     }
     public boolean writeTextLocation(By elemLocation, String text) throws Exception {
-
         String strResult = driver.findElement(elemLocation).getText();
         if(strResult.equals(""))
             findWebElement(elemLocation).sendKeys(text);
@@ -52,16 +51,13 @@ public class BasePage {
         }
         return true;
     }
-    public boolean writeTextWebElem(WebElement elem, String text){
+    public boolean writeTextWebElem(WebElement elem, String text) throws InterruptedException {
 
-        String strResult = elem.getText();
-        if(strResult.equals(""))
-            elem.sendKeys(text);
-        else {
-            Actions actions = new Actions(driver);
-            actions.doubleClick(elem).perform();
-            elem.sendKeys(text);
-        }
+        Actions actions = new Actions(driver);
+        actions.click(elem).sendKeys(Keys.chord(Keys.CONTROL, "a")).sendKeys(Keys.chord(Keys.BACK_SPACE));
+        elem.sendKeys(text);
+        changeTime(30);
+
         return true;
     }
     public String readTextByElem(By elemLocation) throws Exception {
@@ -70,7 +66,6 @@ public class BasePage {
     public String readTextWebElem(WebElement elem) throws Exception {
         return elem.getText();
     }
-
     public boolean click(By elemLocation){
         try
         {
@@ -87,10 +82,13 @@ public class BasePage {
     public WebDriver getWebDriver() {
         return driver;
     }
-    public void ChangeTimeLimit(int duration){
-        driver.manage().timeouts().implicitlyWait(duration, TimeUnit.SECONDS);
+    public void changeTimeLimit(int durationSecond){
+        driver.manage().timeouts().implicitlyWait(durationSecond, TimeUnit.SECONDS);
     }
-
+    public void changeTimeLoad(int durationSecond) { driver.manage().timeouts().pageLoadTimeout(durationSecond, TimeUnit.SECONDS);}
+    public void changeTime(int durationMilisecond) throws InterruptedException {
+        Thread.sleep(durationMilisecond);
+    }
     public WebElement findWebElement(By byElem) throws Exception{
         return wait.until ((driver) -> driver.findElement(byElem));
     }
@@ -101,10 +99,8 @@ public class BasePage {
         // until_not(lambda driver: driver.findElement(byElem).isDisplayed());
     }
 */
-    public void exitDriver(){
-     driver.quit();
- }
     public void init(){
         PageFactory.initElements(driver,this);
+        changeTimeLoad(30);
     }
 }

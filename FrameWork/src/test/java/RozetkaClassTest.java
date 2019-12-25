@@ -1,8 +1,10 @@
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,6 +22,11 @@ class RozetkaClassTest {
     void bef(){
         rozetkaPage = new RozetkaClass();
     }
+    @AfterClass
+     void end(){
+        rozetkaPage.getWebDriver().quit();
+    }
+
     @Ignore
     void load() {
     }
@@ -29,17 +36,14 @@ class RozetkaClassTest {
     }
 
     @Test
-    void goToTypeOfSomething(){
+    void goToTypeOfSomething() throws InterruptedException {
         String strSearch = "Ноутбук";
-//        By byLap = By.xpath("//img[@alt='Тонкі та легкі']");
-//        String currentUrl = "https://rozetka.com.ua/ua/notebooks/c80004/filter/preset=tonkie-i-legkie/";
         rozetkaPage.init();
         rozetkaPage.getSearchBox().click();
         rozetkaPage.writeTextWebElem(rozetkaPage.getSearchBox(), strSearch);
+//        rozetkaPage.getSearchButton().submit();
+//        rozetkaPage.changeTimeLimit(20);
 //        rozetkaPage.getSearchButton().click();
-//        rozetkaPage.getSearchButton().click();
-
-//        click(subTypeSomething);
 
 //        assertSame(currentUrl,rozetkaPage.currentUrl());
     }
@@ -84,20 +88,47 @@ class RozetkaClassTest {
     }
 
     @Test
-    void minAndMaxTextPrice(){
+    void minAndMaxTextPrice() throws Exception {
         String currentUrl = "https://rozetka.com.ua/ua/notebooks/c80004/";
         rozetkaPage.getDriver(currentUrl);
-        int minPrice = 100, maxPrice = 500;
+        int minPrice = 500, maxPrice = 10000;
+        int newMinPrice,newMaxPrice;
         rozetkaPage.init();
-        rozetkaPage.writeTextWebElem(rozetkaPage.getMinTextElem(), Integer.toString(50));
-        rozetkaPage.writeTextWebElem(rozetkaPage.getMaxTextElem(), Integer.toString(100));
-        rozetkaPage.getOkButtonPrice().click();
+//        rozetkaPage.changeTime(30);
+//
+        /*enter min price in text elem*/
+        rozetkaPage.writeTextWebElem(rozetkaPage.getMinTextElem(), Integer.toString(minPrice));
+//        rozetkaPage.getMinTextElem().getAttribute(Integer.toString(minPrice));
+        /*waitigtime*/
+        rozetkaPage.changeTime(30);
+//        rozetkaPage.changeTimeLimit(30);
 
-        assertSame(rozetkaPage.tex,);
+//        rozetkaPage.getMinTextElem().click();
+
+        /*return current  price*/
+//        newMinPrice = Integer.parseInt(rozetkaPage.readTextWebElem(rozetkaPage.getMinTextElem()));
+
+        /*waitigtime*/
+        rozetkaPage.changeTime(20);
+        rozetkaPage.changeTimeLimit(30);
+
+        /*enter max price in text elem*/
+        rozetkaPage.writeTextWebElem(rozetkaPage.getMaxTextElem(), Integer.toString(maxPrice));
+
+//        rozetkaPage.getMaxTextElem().click();
+
+        /*return current  price*/
+//        newMaxPrice = Integer.parseInt(rozetkaPage.readTextWebElem(rozetkaPage.getMaxTextElem()));
+//        rozetkaPage.getMaxTextElem().click();
+
+
+        rozetkaPage.changeTime(30);
+
+        /*click button ok*/
+        rozetkaPage.getOkButtonPrice().click();
+//        assertSame(newMaxPrice,maxPrice);
+//        assertSame( newMinPrice, minPrice);
     }
-   /* @AfterAll
-    void end(){
-//        rozetkaPage.exitDriver();
-    }*/
+
 
 }
