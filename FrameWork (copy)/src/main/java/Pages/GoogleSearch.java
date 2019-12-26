@@ -1,44 +1,41 @@
 package Pages;
 
 import Elements.CheckBoxClass;
+//import com.sun.org.apache.bcel.internal.generic.ARETURN;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 
 public class GoogleSearch extends BasePage {
 
     private String  baseUrl= "https://www.google.com";
+    @FindBy(xpath = "//*[@id='tsf']/div[2]/div[1]/div[1]/div/div[2]/input")
     private WebElement searchBoxHome;
 
+
+    @FindBy(xpath = "//a[@href='https://macpaw.com/uk']")
+    private WebElement findingWeElem;
+
+
     @FindBy(id="pnnext")
-    private WebElement nextPageButton;
-
-    @FindBy(xpath = "//*[@id='nav']/tbody/tr/td[last() -1 ]")
-    private WebElement lastWebElemOfLinks;
-
-    @FindBy(id="pnnext")
-    private WebElement buttonNextPage;
-
-    /*@FindBy(xpath = "//*[@id='tsf']/div[2]/div[1]/div[1]/div/div[2]/input")
     @CacheLookup
-    WebElement searchBoxHome;*/
-    //@FindBy(xpath = "//*[@id='tsf']/div[2]/div[1]/div[2]/div/div[2]/input")
-    //private WebElement searchBox;
+    private WebElement buttonNextPage;
 
     private CheckBoxClass linkList;
 
     public GoogleSearch(){
         super();
         getDriver(baseUrl);
-        searchBoxHome = driver.findElement(By.xpath("//*[@id='tsf']/div[2]/div[1]/div[1]/div/div[2]/input"));
     }
 
     public WebElement getButtonNextPage(){
         return buttonNextPage;
     }
-    public WebElement getLastWebElemOfLinks(){
-        return lastWebElemOfLinks;
+    public WebElement getFindingWeElem(){
+        return findingWeElem;
     }
+    public By getFindingWeElemBy() {return By.xpath("//a[@href='https://macpaw.com/uk']");}
     public String getBaseUrl(){
         return baseUrl;
     }
@@ -46,16 +43,14 @@ public class GoogleSearch extends BasePage {
         return searchBoxHome;
     }
     public WebElement getNextPageButton(){
-        return nextPageButton;
-    }
-    public void searchText(String searchText){
-        //linkList = new CheckBoxClass( driver,By.xpath("//*[@id='nav']/tbody/tr"));
-
-    }
-    public void clickWebElem(WebElement webElement){
-        webElement.click();
+        return buttonNextPage;
     }
 
+    public boolean findButtonNextPage() throws Exception {
+        if(findWebElement(By.id("pnnext")) != null)
+            return true;
+        return false;
+    }
     public void submitWebElem(WebElement webElement){
         webElement.submit();
     }
@@ -72,16 +67,20 @@ public class GoogleSearch extends BasePage {
     public CheckBoxClass getLinkList(){
         return linkList;
     }
-    public GoogleSearch findAndScreenPages(By byElement) throws Exception {
-        for(int i = 1; i < 4; i++){
-            init();
-            if(driver.findElements(byElement).size() >0){
-                makeScreen("findPage" + Integer.toString(i));
-                break;
+    public GoogleSearch findAndScreenAllPages(By byElem) throws Exception {
+        int i = 1;
+        while(findButtonNextPage()){
+            if( findWebElement(byElem) != null){
+                makeScreen(Integer.toString(i) + "macpawfind");
+                return this;
             }
-            getButtonNextPage().click();
-            makeScreen(Integer.toString(i));
+            init();
+            clickWebElem(buttonNextPage);
+            i++;
         }
+
+        makeScreen(Integer.toString(i) + "macpawfind");
+
         return this;
     }
     public String findFirstPage(By byFindElem) throws Exception{

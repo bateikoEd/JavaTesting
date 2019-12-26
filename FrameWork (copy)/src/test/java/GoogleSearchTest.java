@@ -26,18 +26,18 @@ class GoogleSearchTest {
         googlePage.writeTextWebElem(googlePage.getSearchBoxHome(), searchText);
         googlePage.submitWebElem(googlePage.getSearchBoxHome());
 
-        assertNotEquals(googlePage.findFirstPage(By.xpath("//a[@href='https://macpaw.com/uk']"))
-                , googlePage.getBaseUrl());
+       /*assertNotEquals(googlePage.findFirstPage(googlePage.getFindingWeElemBy()
+                 , googlePage.getBaseUrl());*/
     }
 
     @Test
     void searchText() throws Exception {
-        String searchText = "macpaw7";
-        googlePage.clickWebElem(googlePage.getSearchBoxHome());
+        String searchText = "macpaw212";
+        googlePage.init();
         googlePage.writeTextWebElem(googlePage.getSearchBoxHome(), searchText);
         googlePage.submitWebElem(googlePage.getSearchBoxHome());
 
-        googlePage.findAndScreenPages(By.xpath("//a[@href='https://macpaw.com/uk']"));
+        googlePage.findAndScreenAllPages(googlePage.getFindingWeElemBy());
 
     }
 }

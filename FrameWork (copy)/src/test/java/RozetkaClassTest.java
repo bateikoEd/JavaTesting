@@ -18,7 +18,7 @@ class RozetkaClassTest {
     void bef(){
         rozetkaPage = new RozetkaClass();
     }
-    @AfterClass
+    @AfterEach
      void end(){
         rozetkaPage.getWebDriver().quit();
     }
@@ -79,7 +79,7 @@ class RozetkaClassTest {
     }
 
     @Test
-    void buyItem(){
+    void buyItem() throws Exception {
         rozetkaPage.buyThink();
     }
 
@@ -95,13 +95,13 @@ class RozetkaClassTest {
         rozetkaPage.writeTextWebElem(rozetkaPage.getMinTextElem(), Integer.toString(minPrice));
 
         /*waitigtime*/
-        rozetkaPage.changeTimeLimit(20);
+//        rozetkaPage.changeTimeLimit(30);
 
         /*return current  price*/
 //        newMinPrice = Integer.parseInt(rozetkaPage.readTextWebElem(rozetkaPage.getMinTextElem()));
 
         /*waitigtime*/
-        rozetkaPage.changeTime(20);
+//        rozetkaPage.changeTime(30);
 
         /*enter max price in text elem*/
         rozetkaPage.writeTextWebElem(rozetkaPage.getMaxTextElem(), Integer.toString(maxPrice));
@@ -109,7 +109,7 @@ class RozetkaClassTest {
         /*return current  price*/
 //        newMaxPrice = Integer.parseInt(rozetkaPage.readTextWebElem(rozetkaPage.getMaxTextElem()));
 
-        rozetkaPage.changeTime(30);
+//        rozetkaPage.changeTime(30);
 
         /*click button ok*/
         rozetkaPage.getOkButtonPrice().click();

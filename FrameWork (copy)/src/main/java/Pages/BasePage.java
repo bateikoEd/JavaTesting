@@ -5,9 +5,11 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -15,13 +17,16 @@ import java.util.concurrent.TimeUnit;
 public class BasePage {
 
     protected WebDriver driver;
-    protected WebDriverWait wait;
+    protected Wait<WebDriver> wait;
 
     public BasePage(){
         String exePath = "/home/bateiko/Downloads/chromedriver_linux64/chromedriver";
         System.setProperty("webdriver.chrome.driver", exePath);
         this.driver = new ChromeDriver();
-        wait = new WebDriverWait(driver,15 );
+        wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(5, TimeUnit.SECONDS)
+                .pollingEvery(2, TimeUnit.SECONDS)
+                .ignoring(NoSuchElementException.class);
         driver.manage().window().maximize();
     }
     public BasePage getDriver(String URL) {
@@ -54,38 +59,37 @@ public class BasePage {
     }
 
     public boolean writeTextWebElem(WebElement elem, String text) throws InterruptedException {
-        String strResult = elem.getText();
-
-        if(strResult.isEmpty())
-            elem.sendKeys(text);
-        else {
-            Actions actions = new Actions(driver);
+            /*Actions actions = new Actions(driver);
             actions.click(elem).sendKeys(Keys.chord(Keys.CONTROL, "a")).sendKeys(Keys.chord(Keys.BACK_SPACE));
+            */
+            elem.clear();
             elem.sendKeys(text);
-            changeTime(20);
-        }
+            changeTimeLimit(20);
+
         return true;
     }
     /*public String readTextByElem(By elemLocation) throws Exception {
         return findWebElement(elemLocation).getTe            actions.click(elem).sendKeys(Keys.chord(Keys.CONTROL, "a")).sendKeys(Keys.chord(Keys.BACK_SPACE));
 xt();
     }*/
-    public String readTextWebElem(WebElement elem) throws Exception {
+    public String readTextWebElem(WebElement elem){
         return elem.getText();
     }
-    public boolean click(By elemLocation){
-        try
-        {
+    public boolean click(By elemLocation) throws Exception {
+
+        if(wait.until(ExpectedConditions.elementToBeClickable(elemLocation)) != null) {
             findWebElement(elemLocation).click();
+            return true;
         }
-        catch (WebDriverException ex)
-        {
-            return false;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        System.out.println("Elem not clicamble");
         return true;
     }
+
+    public void clickWebElem(WebElement webElement) {
+//        if(wait.until(ExpectedConditions.elementToBeClickable(webElement)) != null)
+            webElement.click();
+    }
+
     public WebDriver getWebDriver() {
         return driver;
     }
@@ -97,17 +101,23 @@ xt();
         Thread.sleep(durationMilisecond);
     }
     public WebElement findWebElement(By byElem) throws Exception{
-        return wait.until ((driver) -> driver.findElement(byElem));
+
+//        wait.until(ExpectedConditions.invisibilityOfElementLocated(byElem)))
+        if(driver.findElements(byElem).size()>0)
+            return  wait.until(ExpectedConditions.elementToBeClickable(byElem));
+
+        return null;
+
     }
     public void init(){
         PageFactory.initElements(driver,this);
         changeTimeLoad(20);
     }
-   /* public boolean makeScreenPage(String numbPage,String testName) {
+    /*
+    public boolean makeScreenPage(String numbPage,String testName) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         WebElement element1 = driver.findElement(By.xpath("//div[@id='searchform']"));
-        js.executeScript("arguments[0].setAttribute('style', 'visibility: hidden;')",element1);
-
+        js.executeScript("arguments[0].setAttribute('style', 'visibility: hidden;')", element1); }
         Screenshot screenshot=new AShot().coordsProvider(new WebDriverCoordsProvider()).shootingStrategy(ShootingStrategies.viewportPasting(200)).takeScreenshot(Chrome.getDriver());
         try {
             ImageIO.write(screenshot.getImage(), "PNG", new File(testName+"_Time_"+(System.currentTimeMillis()-Chrome.getTimme())+"_Page_№" + numbPage +".png"));

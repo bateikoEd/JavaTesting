@@ -105,7 +105,7 @@ public class RozetkaClass extends BasePage {
     public CheckBoxClass clickCheckBoxROM(int Index1){
         return checkBoxROM.clickIndexElement(Index1);
     }
-    public RozetkaClass buyThink(){
+    public RozetkaClass buyThink() throws Exception {
         click(By.cssSelector("body > app-root > div > div:nth-child(2) > rz-catalog > div > main > ivv-catalog > div.layout.layout_with_sidebar > section > ivv-grid > ul > li:nth-child(1) > app-goods-tile > app-goods-tile-default > div > div.goods-tile__inner > div.goods-tile__prices > div.goods-tile__price.goods-tile__price_color_red > app-buy-button > button"));
         click(By.xpath("//a[@href='https://my.rozetka.com.ua/ua/profile/cart']"));
         click(By.xpath("//a[@href='https://my.rozetka.com.ua/ua/checkout']"));
