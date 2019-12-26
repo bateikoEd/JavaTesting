@@ -12,6 +12,7 @@ class GoogleSearchTest {
     @BeforeEach
     void setUp() {
         googlePage = new GoogleSearch();
+        googlePage.init();
     }
 
     @AfterEach
@@ -22,7 +23,6 @@ class GoogleSearchTest {
     @Test
     void firstPage() throws Exception{
         String searchText = "macpaw";
-        googlePage.clickWebElem(googlePage.getSearchBoxHome());
         googlePage.writeTextWebElem(googlePage.getSearchBoxHome(), searchText);
         googlePage.submitWebElem(googlePage.getSearchBoxHome());
 
@@ -33,11 +33,18 @@ class GoogleSearchTest {
     @Test
     void searchText() throws Exception {
         String searchText = "macpaw212";
-        googlePage.init();
         googlePage.writeTextWebElem(googlePage.getSearchBoxHome(), searchText);
         googlePage.submitWebElem(googlePage.getSearchBoxHome());
 
         googlePage.findAndScreenAllPages(googlePage.getFindingWeElemBy());
+    }
 
+    @Test
+    void setNotSirstPage() throws Exception {
+        String searchText = "macpaw";
+        googlePage.writeTextWebElem(googlePage.getSearchBoxHome(), searchText);
+        googlePage.submitWebElem(googlePage.getSearchBoxHome());
+
+        googlePage.findAndScreenAllPages(googlePage.getNotFirstPageElemBy());
     }
 }

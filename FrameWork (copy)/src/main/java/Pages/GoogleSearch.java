@@ -17,6 +17,8 @@ public class GoogleSearch extends BasePage {
     @FindBy(xpath = "//a[@href='https://macpaw.com/uk']")
     private WebElement findingWeElem;
 
+    @FindBy(xpath = "//a [@href ='https://ua.indeed.com/Macpaw-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D0%9A%D0%B8%D0%B5%D0%B2']")
+    private WebElement notFirstPageWebElem;
 
     @FindBy(id="pnnext")
     @CacheLookup
@@ -28,7 +30,9 @@ public class GoogleSearch extends BasePage {
         super();
         getDriver(baseUrl);
     }
-
+    public By getNotFirstPageElemBy(){
+        return By.xpath("//a [@href ='https://ua.indeed.com/Macpaw-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D0%9A%D0%B8%D0%B5%D0%B2']");
+    }
     public WebElement getButtonNextPage(){
         return buttonNextPage;
     }
