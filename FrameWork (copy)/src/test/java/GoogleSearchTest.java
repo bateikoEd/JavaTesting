@@ -23,25 +23,32 @@ class GoogleSearchTest {
     @Test
     void firstPage() throws Exception{
         String searchText = "macpaw";
+        int numberOfPage = 1;
         googlePage.writeTextWebElem(googlePage.getSearchBoxHome(), searchText);
         googlePage.submitWebElem(googlePage.getSearchBoxHome());
 
-       /*assertNotEquals(googlePage.findFirstPage(googlePage.getFindingWeElemBy()
-                 , googlePage.getBaseUrl());*/
+        int currentNumberOfPage = googlePage.findAndScreenAllPages(googlePage.getFindingWeElemBy());
+
+       assertSame(currentNumberOfPage,numberOfPage);
     }
 
     @Test
     void searchText() throws Exception {
         String searchText = "macpaw212";
+        int numberOfPage = 2;
+
         googlePage.writeTextWebElem(googlePage.getSearchBoxHome(), searchText);
         googlePage.submitWebElem(googlePage.getSearchBoxHome());
 
-        googlePage.findAndScreenAllPages(googlePage.getFindingWeElemBy());
+        int currentNumberOfPage =  googlePage.findAndScreenAllPages(googlePage.getFindingWeElemBy());
+
+        assertSame(currentNumberOfPage,numberOfPage);
     }
 
     @Test
     void setNotSirstPage() throws Exception {
         String searchText = "macpaw";
+
         googlePage.writeTextWebElem(googlePage.getSearchBoxHome(), searchText);
         googlePage.submitWebElem(googlePage.getSearchBoxHome());
 

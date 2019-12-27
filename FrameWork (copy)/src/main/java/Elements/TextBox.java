@@ -8,11 +8,3 @@ public class TextBox extends BaseElement {
     }
 }
 
-//ExcpectesCondition<webElement > obj=new ExpectedCondition<WebElement>() {
-//public WebElement apply(WebDriver driver) {
-//        try {
-//        return ExpectedConditions.elementIfVisible(driver.findElement(locator));
-//        } catch (StaleElementReferenceException var3) {
-//        return null;
-//        }
-//        }

@@ -1,7 +1,6 @@
 package Pages;
 
 import Elements.CheckBoxClass;
-//import com.sun.org.apache.bcel.internal.generic.ARETURN;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -30,9 +29,7 @@ public class GoogleSearch extends BasePage {
         super();
         getDriver(baseUrl);
     }
-    public By getNotFirstPageElemBy(){
-        return By.xpath("//a [@href ='https://ua.indeed.com/Macpaw-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D0%9A%D0%B8%D0%B5%D0%B2']");
-    }
+    public By getNotFirstPageElemBy(){ return By.xpath("//a [@href ='https://ua.indeed.com/Macpaw-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D0%9A%D0%B8%D0%B5%D0%B2']"); }
     public WebElement getButtonNextPage(){
         return buttonNextPage;
     }
@@ -49,7 +46,6 @@ public class GoogleSearch extends BasePage {
     public WebElement getNextPageButton(){
         return buttonNextPage;
     }
-
     public boolean findButtonNextPage() throws Exception {
         if(findWebElement(By.id("pnnext")) != null)
             return true;
@@ -58,12 +54,10 @@ public class GoogleSearch extends BasePage {
     public void submitWebElem(WebElement webElement){
         webElement.submit();
     }
-
     public GoogleSearch createCheckBoxClass(By byElem){
         linkList = new CheckBoxClass(driver,byElem);
         return this;
     }
-
     public GoogleSearch setLinkList(CheckBoxClass list){
         linkList.setWebElementList(list.getWebElementList());
         return  this;
@@ -71,21 +65,20 @@ public class GoogleSearch extends BasePage {
     public CheckBoxClass getLinkList(){
         return linkList;
     }
-    public GoogleSearch findAndScreenAllPages(By byElem) throws Exception {
+    public int findAndScreenAllPages(By byElem) throws Exception {
         int i = 1;
         while(findButtonNextPage()){
             if( findWebElement(byElem) != null){
                 makeScreen(Integer.toString(i) + "macpawfind");
-                return this;
+                return i;
             }
             init();
             clickWebElem(buttonNextPage);
             i++;
         }
-
         makeScreen(Integer.toString(i) + "macpawfind");
 
-        return this;
+        return i;
     }
     public String findFirstPage(By byFindElem) throws Exception{
         click(byFindElem);

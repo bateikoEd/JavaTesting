@@ -19,29 +19,19 @@ class RozetkaClassTest {
         rozetkaPage = new RozetkaClass();
     }
     @AfterEach
-     void end(){
+     void tearDown(){
         rozetkaPage.getWebDriver().quit();
     }
 
     @Ignore
-    void load() {
-    }
-
-    @Ignore
-    void isLoaded() {
-    }
-
-    @Test
     void goToTypeOfSomething() throws InterruptedException {
         String strSearch = "Ноутбук";
-        rozetkaPage.init();
-        rozetkaPage.getSearchBox().click();
+        String currentUrl = "https://rozetka.com.ua/ua/notebooks/c80004/";
+//        rozetkaPage.clickWebElem(rozetkaPage.getSearchBox()); getSearchBox().click();
         rozetkaPage.writeTextWebElem(rozetkaPage.getSearchBox(), strSearch);
-//        rozetkaPage.getSearchButton().submit();
-//        rozetkaPage.changeTimeLimit(20);
-//        rozetkaPage.getSearchButton().click();
+        rozetkaPage.getSearchButton().click();
 
-//        assertSame(currentUrl,rozetkaPage.currentUrl());
+        assertSame(currentUrl,rozetkaPage.currentUrl());
     }
 
     @Ignore
@@ -78,7 +68,7 @@ class RozetkaClassTest {
                 rozetkaPage.getCheckBoxROM().getWebElement(indexRom).isSelected());
     }
 
-    @Test
+    @Ignore
     void buyItem() throws Exception {
         rozetkaPage.buyThink();
     }
@@ -87,34 +77,12 @@ class RozetkaClassTest {
     void minAndMaxTextPrice() throws Exception {
         String currentUrl = "https://rozetka.com.ua/ua/notebooks/c80004/";
         rozetkaPage.getDriver(currentUrl);
-        int minPrice = 500, maxPrice = 10000;
-        int newMinPrice,newMaxPrice;
         rozetkaPage.init();
-//
-        /*enter min price in text elem*/
-        rozetkaPage.writeTextWebElem(rozetkaPage.getMinTextElem(), Integer.toString(minPrice));
+        int minPrice = 500;
 
-        /*waitigtime*/
-//        rozetkaPage.changeTimeLimit(30);
-
-        /*return current  price*/
-//        newMinPrice = Integer.parseInt(rozetkaPage.readTextWebElem(rozetkaPage.getMinTextElem()));
-
-        /*waitigtime*/
-//        rozetkaPage.changeTime(30);
-
-        /*enter max price in text elem*/
-        rozetkaPage.writeTextWebElem(rozetkaPage.getMaxTextElem(), Integer.toString(maxPrice));
-
-        /*return current  price*/
-//        newMaxPrice = Integer.parseInt(rozetkaPage.readTextWebElem(rozetkaPage.getMaxTextElem()));
-
-//        rozetkaPage.changeTime(30);
-
-        /*click button ok*/
-        rozetkaPage.getOkButtonPrice().click();
-//        assertSame(newMaxPrice,maxPrice);
-//        assertSame( newMinPrice, minPrice);
+        /*True : if all price`s item more than minPrice*/
+        boolean resultBool = rozetkaPage.enterTextInBox(rozetkaPage.getMinTextElemBy(),rozetkaPage.getMinTextElem(), minPrice);
+        assertSame( resultBool, true);
     }
 
 
