@@ -65,7 +65,7 @@ public class GoogleSearch extends BasePage {
     public CheckBoxClass getLinkList(){
         return linkList;
     }
-    public int findAndScreenAllPages(By byElem) throws Exception {
+    public int findAndScreenPages(By byElem,String name) throws Exception {
         int i = 1;
         while(findButtonNextPage()){
             if( findWebElement(byElem) != null){
@@ -76,10 +76,29 @@ public class GoogleSearch extends BasePage {
             clickWebElem(buttonNextPage);
             i++;
         }
-        makeScreen(Integer.toString(i) + "macpawfind");
+        makeScreen(Integer.toString(i) + name);
 
         return i;
     }
+
+    public int findAndScreenAllPages(By byElem,String name) throws Exception {
+        int i = 1;
+        while(findButtonNextPage()){
+            if( findWebElement(byElem) != null){
+                makeScreen(Integer.toString(i) + name + "macpawfind");
+                return i;
+            }
+            makeScreen(Integer.toString(i) + name);
+            init();
+            clickWebElem(buttonNextPage);
+            i++;
+        }
+        makeScreen(Integer.toString(i) + name);
+
+
+        return i;
+    }
+
     public String findFirstPage(By byFindElem) throws Exception{
         click(byFindElem);
         makeScreen("macpaw");

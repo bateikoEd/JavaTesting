@@ -23,35 +23,38 @@ class GoogleSearchTest {
     @Test
     void firstPage() throws Exception{
         String searchText = "macpaw";
+        String namesScreen = "FirstPage";
+
         int numberOfPage = 1;
         googlePage.writeTextWebElem(googlePage.getSearchBoxHome(), searchText);
         googlePage.submitWebElem(googlePage.getSearchBoxHome());
 
-        int currentNumberOfPage = googlePage.findAndScreenAllPages(googlePage.getFindingWeElemBy());
+        int currentNumberOfPage = googlePage.findAndScreenPages(googlePage.getFindingWeElemBy(), namesScreen);
 
        assertSame(currentNumberOfPage,numberOfPage);
     }
 
     @Test
-    void searchText() throws Exception {
-        String searchText = "macpaw212";
-        int numberOfPage = 2;
+    void setNotFirstPage() throws Exception {
+        String searchText = "macpaw";
+        String namesScreen = "setNotFirstPage";
+        int numberOfPage = 4;
 
         googlePage.writeTextWebElem(googlePage.getSearchBoxHome(), searchText);
         googlePage.submitWebElem(googlePage.getSearchBoxHome());
 
-        int currentNumberOfPage =  googlePage.findAndScreenAllPages(googlePage.getFindingWeElemBy());
+        int currentNumberOfPage =  googlePage.findAndScreenPages(googlePage.getNotFirstPageElemBy(), namesScreen);
 
         assertSame(currentNumberOfPage,numberOfPage);
     }
 
     @Test
-    void setNotSirstPage() throws Exception {
-        String searchText = "macpaw";
-
+    void setAllPages() throws Exception {
+        String searchText = "openccs";
+        String namesScreen = "setAllPages";
         googlePage.writeTextWebElem(googlePage.getSearchBoxHome(), searchText);
         googlePage.submitWebElem(googlePage.getSearchBoxHome());
 
-        googlePage.findAndScreenAllPages(googlePage.getNotFirstPageElemBy());
+        googlePage.findAndScreenAllPages(googlePage.getFindingWeElemBy(), namesScreen);
     }
 }

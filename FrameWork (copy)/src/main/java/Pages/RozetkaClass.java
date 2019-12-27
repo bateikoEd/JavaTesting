@@ -94,7 +94,6 @@ public class RozetkaClass extends BasePage {
     public WebElement getOkButtonPrice(){
         return okButtonPrice;
     }
-
     public boolean enterTextInBox(By elementBy, WebElement element, int minPrice) throws Exception {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(elementBy));
         writeTextWebElem(element,Integer.toString(minPrice));
